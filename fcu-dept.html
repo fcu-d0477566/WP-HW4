@@ -1,0 +1,114 @@
+<HTML>
+<HEAD><TITLE>動態下拉式選單 (二階層):</Title></Head>
+
+
+<FORM Name="myForm">
+
+請選擇學院
+:
+<p></p>
+<SELECT Name="xueyuan" OnChange="Buildkey(this.selectedIndex);">
+<OPTION Value="">請選擇學院
+<OPTION Value="">商學院
+<OPTION Value="">工學院
+<OPTION Value="">建設學院
+<OPTION Value="">金融學院
+<OPTION Value="">建築專業學院
+<OPTION Value="">國際科技與管理學院
+<OPTION Value="">資電學院
+<OPTION Value="">人文社會學院
+<OPTION Value="">理學院
+<OPTION Value="">經營管理學院
+<OPTION Value="">跨科系學習
+</Select>
+
+<BR>
+當你選擇學院後，下列選單會列出屬於該學院的所有科系
+:
+<p></p>
+<SELECT Name="kexi">
+
+</Select>
+
+
+</Form>
+</Body>
+</Html>
+
+<SCRIPT Language="JavaScript">
+key=new Array(11);
+key[0]=new Array(0);
+key[1]=new Array(16);
+key[2]=new Array(12);
+key[3]=new Array(9);
+key[4]=new Array(5);
+key[5]=new Array(7);
+key[6]=new Array(5);
+key[7]=new Array(12);
+key[8]=new Array(4);
+key[9]=new Array(6);
+key[10]=new Array(2);
+key[11]=new Array(5);
+
+key[0][0]="";
+var shang = ["會計學系","國際經營與貿易學系","國際經營與貿易學系國際企業管理全英語學士班","財稅學系","合作經濟暨社會事業經營學系","統計學系","經濟學系",
+"企業管理學系","行銷學系","國際企業管理學士學位學程(英語專班)","商學進修學士學位學程","財經法律研究所","科技管理碩士學位學程","產業碩士專班","商學專業碩士在職學位學程",
+"商學博士學位學程"];
+var gong = ["機械與電腦輔助工程學系","纖維與複合材料學系","工業工程與系統管理學系","化學工程學系","航太與系統工程學系","精密系統設計學士學位學程",
+"電聲碩士學位學程","綠色能源科技碩士學位學程","創意設計碩士學位學程","材料與製造工程碩士在職專班","智能製造與工程管理碩士在職學位學程","機械與航空工程博士學位學程"];
+var jianshe = ["土木工程學系","水利工程與資源保育學系","都市計畫與空間資訊學系","運輸與物流學系","土地管理學系","景觀與遊憩碩士學位學程","專案管理碩士在職學位學程",
+"建設碩士在職學位學程","土木水利工程與建設規劃博士學位學程"];
+var jinrong = ["風險管理與保險學系","財務金融學系","財務工程與精算學士學位學程","金融碩士在職學位學程","金融博士學位學程"];
+var jianzhu = ["建築專業學院學士班","建築學士學位學程","室內設計學士學位學程","室內設計進修學士班","創新設計學士學位學程","建築碩士學位學程","建築碩士在職學位學程"];
+var guoji = ["澳洲墨爾本皇家理工大學商學與創新雙學士學位學程","美國聖荷西州立大學商學大數據分析雙學士學位學程","美國普渡大學電機資訊雙學士學位學程","西班牙薩拉戈薩大學物流供應鏈管理與創新創業雙碩士學位學程",
+"國際經營管理碩士學位學程"];
+var zidian = ["資訊工程學系","電機工程學系","電子工程學系","自動控制工程學系","通訊工程學系","資電不分系榮譽班","資訊電機工程碩士在職學位學程","產業研發碩士專班",
+"生醫資訊暨生醫工程碩士學位學程","視光科技碩士在職學位學程","電機與通訊工程博士學位學程","智慧聯網產業博士學位學程"];
+var renwen = ["中國文學系","外國語文學系","歷史與文物研究所","公共事務與社會創新研究所"];
+var li =["應用數學系","環境工程與科學學系","材料科學與工程學系","光電學系","微積分教學中心","物理教學研究中心"];
+var jingying=["經營管理碩士在職學位學程","電子商務碩士在職專班"];
+var kuakexi=["通識教育中心","雲端學院","外語教學中心","國語文教學中心","全校國際生大一不分系學士班"];
+for(var i=0;i < 16;i++){
+	key[1][i] = shang[i];
+}
+for(var i=0;i < 12;i++){
+	key[2][i] = gong[i];
+}
+for(var i=0;i < 9;i++){
+	key[3][i] = jianshe[i];
+}
+for(var i=0;i < 5;i++){
+	key[4][i] = jinrong[i];
+}
+for(var i=0;i < 7;i++){
+	key[5][i] = jianzhu[i];
+}
+for(var i=0;i < 5;i++){
+	key[6][i] = guoji[i];
+}
+for(var i=0;i < 12;i++){
+	key[7][i] = zidian[i];
+}
+for(var i=0;i < 4;i++){
+	key[8][i] = renwen[i];
+}
+for(var i=0;i < 6;i++){
+	key[9][i] = li[i];
+}
+for(var i=0;i < 2;i++){
+	key[10][i] = jingying[i];
+}
+for(var i=0;i < 5;i++){
+	key[11][i] = kuakexi[i];
+}
+function Buildkey(num)
+{
+  document.myForm.kexi.selectedIndex=0;
+  for(ctr=0;ctr<key[num].length;ctr++){
+    document.myForm.kexi.options[ctr]=new Option(key[num][ctr],key[num][ctr]);
+  }
+ document.myForm.kexi.length=key[num].length;
+}
+
+
+</Script> 
